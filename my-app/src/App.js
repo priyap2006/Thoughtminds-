@@ -34,9 +34,9 @@ function App() {
                 required
                 pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                 title="Please enter a valid email address"
+                
               />
             </div>
-
             <br />
 
             <div className="form-group full-width input">
