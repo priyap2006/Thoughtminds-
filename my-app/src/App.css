@@ -8,7 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100px;
-  background: url('./assist/background.jpg')no-repeat;
+  background: url('./assets/background.jpg')no-repeat;
   background-size: cover;
   background-position: center;
   margin: 250px;
@@ -69,6 +69,7 @@ input[type="text"] {
     font-size: 18px;
     border-radius: 5px;
     background-color: transparent;
+   
     }
 
 input[type="password"] {
@@ -95,7 +96,7 @@ input[type="submit"]{
     margin-right: 7px;
     outline:none;
     border:1px solid #ffffff;
-   
+    cursor: pointer;
     border-radius: 5px;
     color:rgb(255, 255, 255);
     background-color:transparent;
