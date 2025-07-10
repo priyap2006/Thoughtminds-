@@ -8,7 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100px;
-  background: url('./assist/background.jpg')no-repeat;
+  background: url('./assets/bg.jpg')no-repeat;
   background-size: cover;
   background-position: center;
   margin: 250px;
@@ -36,7 +36,8 @@ h5{
     flex-direction: column;
     align-items:center;
     background-color:transparent;
-    border:2px#ffffff;
+    backdrop-filter: blur(8px);
+    border:1px solid #ccc;
     width:400px;
     height:400px;
     box-shadow:-10px -10px 15px rgba(0,0,0,0.1),
@@ -65,10 +66,12 @@ input[type="text"] {
       font-size: 16px; 
        margin-right: 7px;
        outline:none;
+       color: #ffffff;
     border:1px solid #ccc;
     font-size: 18px;
     border-radius: 5px;
     background-color: transparent;
+   
     }
 
 input[type="password"] {
@@ -95,7 +98,7 @@ input[type="submit"]{
     margin-right: 7px;
     outline:none;
     border:1px solid #ffffff;
-   
+    cursor: pointer;
     border-radius: 5px;
     color:rgb(255, 255, 255);
     background-color:transparent;
