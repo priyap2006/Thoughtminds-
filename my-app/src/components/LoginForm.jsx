@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
-
-import '../App.css'; 
-
+import { useNavigate } from 'react-router-dom'; 
+import '../App.css';
 
 function LoginForm() {
-const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Email:', email);
     console.log('Password:', password);
+
+    
+
     setEmail('');
     setPassword('');
     alert('Form submitted successfully');
+
+  
+    navigate('/profile');
   };
 
   return (
-
     <div className="container">
       <div className="loginpage">
         <div className="form-container">
@@ -36,7 +41,6 @@ const [email, setEmail] = useState('');
                 required
                 pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
                 title="Please enter a valid email address"
-                
               />
             </div>
             <br />
@@ -57,22 +61,17 @@ const [email, setEmail] = useState('');
               />
             </div>
 
-            <a href="/forgot-password" className='forgot-password'>Forgot Password?</a>
-
+            <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
             <br />
 
             <input type="submit" value="Login" />
             <hr />
-           <a href="/register">Create a new account</a>
+            <a href="/register">Create a new account</a>
           </form>
         </div>
       </div>
     </div>
-  
   );
-  
-
-    
 }
 
 export default LoginForm;
