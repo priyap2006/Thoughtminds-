@@ -21,6 +21,7 @@ function LoginForm() {
   
     navigate('/profile');
   };
+  console.log("LoginForm rendered")
 
   return (
     <div className="container">

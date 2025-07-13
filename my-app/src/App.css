@@ -4,15 +4,16 @@
     padding:0;
 }
 body {
+  min-height: 100vh;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
-  background: url('./assets/bg.jpg')no-repeat;
+  background: url('./assets/bg.jpg') no-repeat;
   background-size: cover;
   background-position: center;
-  margin: 250px;
-  padding: 0;
 }
 
 .container {
