@@ -1,8 +1,8 @@
 import React from 'react';
 
 
-function About() {
+function about() {
   return <h1>Welcome to profile page</h1>;
 }
 
-export default About;
+export default about;
