@@ -7,9 +7,8 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
-
   
-  useEffect(() => {
+ useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((res) => res.json())
       .then((data) => {
@@ -19,31 +18,33 @@ function LoginForm() {
         console.error('Failed to fetch users:', err);
       });
   }, []);
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const user = users.find(
+    (u) => u.email.toLowerCase() === email.toLowerCase()
+  );
 
-    const user = users.find(
-      (u) => u.email.toLowerCase() === email.toLowerCase()
-    );
+  if (!user) {
+    alert("Can't login: Email not found.");
+    return;
+  }
 
-    if (!user) {
-      alert("Can't login: Email not found.");
-      return;
-    }
+  const expectedPassword = `${user.username}@123`;
 
-    const expectedPassword = `${user.username}@123`;
+  if (password !== expectedPassword) {
+    alert("Can't login: Incorrect password.");
+    return;
+  }
 
-    if (password !== expectedPassword) {
-      alert("Can't login: Incorrect password.");
-      return;
-    }
+  alert('Login successful!');
+  setEmail('');
+  setPassword('');
 
-    alert('Login successful!');
-    setEmail('');
-    setPassword('');
-    navigate('/profile');
-  };
+
+  navigate('/profile', { state: { user } });
+};
+
 
   return (
     <div className="container">
@@ -65,7 +66,6 @@ function LoginForm() {
               />
             </div>
             <br />
-
             <div className="form-group full-width input">
               <label>
                 Password<span style={{ color: 'red' }}>*</span>
