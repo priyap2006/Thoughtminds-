@@ -9,15 +9,17 @@ function LoginForm() {
   const navigate = useNavigate();
   
  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-      })
-      .catch((err) => {
-        console.error('Failed to fetch users:', err);
-      });
-  }, []);
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then((res) => res.json())
+    .then((data) => {
+      console.log('Fetched users:', data); 
+      setUsers(data);
+    })
+    .catch((err) => {
+      console.error('Failed to fetch users:', err);
+    });
+}, []);
+
 const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -42,10 +44,11 @@ const handleSubmit = (e) => {
   setPassword('');
 
 
-  navigate('/profile', { state: { user } });
+  localStorage.setItem('user', JSON.stringify(user));
+
+
+  navigate('/profile');
 };
-
-
   return (
     <div className="container">
       <div className="loginpage">
