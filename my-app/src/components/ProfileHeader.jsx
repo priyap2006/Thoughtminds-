@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { getUserFromLocalStorage, logout } from "../functions/utils";
 
 const getInitials = (name) => {
@@ -8,8 +9,14 @@ const getInitials = (name) => {
 };
 
 const ProfileHeader = () => {
+  const navigate = useNavigate();
   const user = getUserFromLocalStorage();
   const initials = getInitials(user?.name);
+
+  const handleLogout = () => {
+    logout();       
+    navigate("/login"); 
+  };
 
   return (
     <div className="profile-header">
@@ -17,9 +24,12 @@ const ProfileHeader = () => {
         <div className="small-profile-photo">{initials}</div>
         <div className="header-username">{user?.name}</div>
       </div>
-      <button className="logout-button" onClick={logout}>Logout</button>
+      <button className="logout-button" onClick={handleLogout}>
+        Logout
+      </button>
     </div>
   );
 };
 
 export default ProfileHeader;
+

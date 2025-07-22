@@ -18,43 +18,82 @@ const Profile = () => {
 
   if (!user) return null;
 
+  const nameParts = user.name ? user.name.trim().split(" ") : [];
+
   return (
     <div className="profile-page">
-      <ProfileHeader />
+      <ProfileHeader user={user} />
 
       <div className="profile-container">
         <div className="profile-left">
-          <div className="initial-circle">{user.name?.charAt(0)}</div>
+          <div className="initial-circle">
+            {nameParts.map((n) => n[0]).join("").toUpperCase()}
+          </div>
           <h2>{user.name}</h2>
-          <p>{user.email}</p>
         </div>
 
         <div className="profile-right">
           <h3>Account Details</h3>
           <div className="form-grid">
             <div>
-              <label>Name</label>
-              <input type="text" value={user.name} disabled />
+              <label>Username</label>
+              <input value={user.username || ""} readOnly />
             </div>
             <div>
-              <label>Email</label>
-              <input type="text" value={user.email} disabled />
+              <label>First name</label>
+              <input value={nameParts[0] || ""} readOnly />
             </div>
             <div>
-              <label>Phone</label>
-              <input type="text" value={user.phone || ""} disabled />
+              <label>Second name</label>
+              <input value={nameParts[1] || ""} readOnly />
             </div>
             <div>
-              <label>Department</label>
-              <input type="text" value={user.department || ""} disabled />
+              <label>Email ID</label>
+              <input value={user.email || ""} readOnly />
             </div>
             <div>
-              <label>Role</label>
-              <input type="text" value={user.role || ""} disabled />
+              <label>City</label>
+              <input value={user.address?.city || ""} readOnly />
             </div>
             <div>
-              <label>Address</label>
-              <input type="text" value={user.address || ""} disabled />
+              <label>Phone Number</label>
+              <input value={user.phone || ""} readOnly />
+            </div>
+            <div>
+              <label>Zipcode</label>
+              <input value={user.address?.zipcode || ""} readOnly />
+            </div>
+            <div>
+              <label>Street</label>
+              <input value={user.address?.street || ""} readOnly />
+            </div>
+            <div>
+              <label>Suite</label>
+              <input value={user.address?.suite || ""} readOnly />
+            </div>
+            <div>
+              <label>Website</label>
+              <input value={user.website || ""} readOnly />
+            </div>
+            <div>
+              <label>Company Name</label>
+              <input value={user.company?.name || ""} readOnly />
+            </div>
+            <div>
+              <label>CatchPhrase</label>
+              <input value={user.company?.catchPhrase || ""} readOnly />
+            </div>
+            <div>
+              <label>Company BS</label>
+              <input value={user.company?.bs || ""} readOnly />
+            </div>
+            <div>
+              <label>Geo Lat</label>
+              <input value={user.address?.geo?.lat || ""} readOnly />
+            </div>
+            <div>
+              <label>Geo Lng</label>
+              <input value={user.address?.geo?.lng || ""} readOnly />
             </div>
           </div>
         </div>
