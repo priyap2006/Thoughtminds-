@@ -1,12 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserFromLocalStorage, logout } from "../functions/utils";
-
-const getInitials = (name) => {
-  if (!name) return "";
-  const names = name.trim().split(" ");
-  return names.map(n => n[0].toUpperCase()).join("").slice(0, 2);
-};
+import getInitials from "../functions/getInitials";
 
 const ProfileHeader = () => {
   const navigate = useNavigate();
@@ -15,7 +10,7 @@ const ProfileHeader = () => {
 
   const handleLogout = () => {
     logout();       
-    navigate("/login"); 
+    navigate("/"); 
   };
 
   return (
@@ -32,4 +27,3 @@ const ProfileHeader = () => {
 };
 
 export default ProfileHeader;
-

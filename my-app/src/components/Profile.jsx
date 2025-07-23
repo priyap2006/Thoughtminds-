@@ -10,7 +10,7 @@ const Profile = () => {
   useEffect(() => {
     const storedUser = getUserFromLocalStorage();
     if (!storedUser) {
-      navigate("/login");
+      navigate("/");
     } else {
       setUser(storedUser);
     }
