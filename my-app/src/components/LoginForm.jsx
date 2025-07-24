@@ -40,7 +40,7 @@ function LoginForm() {
       return;
     }
 
-    alert('Login successful!');
+    
     localStorage.setItem('user', JSON.stringify(user));
     navigate('/profile');
   };

@@ -21,9 +21,10 @@ const Profile = () => {
   const nameParts = user.name ? user.name.trim().split(" ") : [];
 
   return (
-    <div className="profile-page">
+    <div>
       <ProfileHeader user={user} />
-
+    <div className="profile-page">
+      
       <div className="profile-container">
         <div className="profile-left">
           <div className="initial-circle">
@@ -98,6 +99,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
