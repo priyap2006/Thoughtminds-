@@ -8,17 +8,18 @@ function LoginForm() {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
-  
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((res) => res.json())
       .then((data) => {
+        console.log('Fetched users:', data);
         setUsers(data);
       })
       .catch((err) => {
         console.error('Failed to fetch users:', err);
       });
   }, []);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,9 +40,8 @@ function LoginForm() {
       return;
     }
 
-    alert('Login successful!');
-    setEmail('');
-    setPassword('');
+    
+    localStorage.setItem('user', JSON.stringify(user));
     navigate('/profile');
   };
 
@@ -49,13 +49,11 @@ function LoginForm() {
     <div className="container">
       <div className="loginpage">
         <div className="form-container">
-          <form id="myForm" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <h5>Login</h5>
 
             <div className="form-group full-width input">
-              <label>
-                Email ID: <span style={{ color: 'red' }}>*</span>
-              </label>
+              <label>Email ID <span style={{ color: 'red' }}>*</span></label>
               <input
                 type="text"
                 placeholder="Email id"
@@ -65,11 +63,8 @@ function LoginForm() {
               />
             </div>
             <br />
-
             <div className="form-group full-width input">
-              <label>
-                Password<span style={{ color: 'red' }}>*</span>
-              </label>
+              <label>Password <span style={{ color: 'red' }}>*</span></label>
               <input
                 type="password"
                 placeholder="Password"
@@ -79,11 +74,8 @@ function LoginForm() {
               />
             </div>
 
-            <a href="/forgot-password" className="forgot-password">
-              Forgot Password?
-            </a>
+            <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
             <br />
-
             <input type="submit" value="Login" />
             <hr />
             <a href="/register">Create a new account</a>
