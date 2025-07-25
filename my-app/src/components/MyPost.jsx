@@ -46,7 +46,7 @@ const MyPage = () => {
           {posts.map((post) => (
             <div key={post.id} className="post-card">
               <h3>{post.title}</h3>
-              <p>{post.body}</p>
+              <p>{post.body.length > 100 ? post.body.slice(0, 150) + '...' : post.body}</p>
             </div>
           ))}
         </div>
