@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUserFromLocalStorage } from '../functions/utils';
+import getInitials from '../functions/getInitials';
 import '../App.css';
 import '../Post.css';
 
@@ -59,17 +60,23 @@ const AllPage = () => {
       ) : (
         <div className="post-grid">
           {posts.map(post => (
-            <div className="post-card" key={post.id}>
-              <div style={{ fontWeight: "bold", marginBottom: "6px" }}>
-                 {getUsername(post.userId)}
+           <div className="postcard-allpost" key={post.id}>
+              <div className="user-info">
+                <div className="small-profile-photo">
+                  {getInitials(getUsername(post.userId))}
+                </div> 
+                <div className="username">
+                  {getUsername(post.userId)}
+                </div>
               </div>
-              <div style={{ fontWeight: "bold", marginBottom: "6px" }}>
-                 {post.title}
+              <div className="post-title">
+                {post.title}
               </div>
-              <div style={{ color: "#333" }}>
-                 <p>{post.body.length > 100 ? post.body.slice(0, 150) + '...' : post.body}</p>
+              <div className="post-body">
+                <p>{post.body.length > 100 ? post.body.slice(0, 150) + '...' : post.body}</p>
               </div>
             </div>
+
           ))}
         </div>
       )}
